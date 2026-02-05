@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama');
             $table->string('foto')->nullable();
+            $table->string('jenis_kelamin');
             $table->date('tanggal_lahir');
             $table->integer('umur');
             $table->string('gol_darah');

@@ -33,6 +33,7 @@
                         <tr class="text-center">
                             <th>No.</th>
                             <th>Nama</th>
+                            <th>Jenis Kelamin</th>
                             <th>Tanggal Lahir</th>
                             <th>Umur</th>
                             <th>Gol. Darah</th>
@@ -48,6 +49,7 @@
                             <tr>
                                 <td class="text-center">{{ $loop->iteration }}</td>
                                 <td>{{ $item->nama }}</td>
+                                <td class="text-center">{{ $item->jenis_kelamin }}</td>
                                 <td class="text-center">{{ date('d-m-Y', strtotime($item->tanggal_lahir)) }}</td>
                                 <td class="text-center">{{ $item->umur }}</td>
                                 <td class="text-center">{{ $item->gol_darah }}</td>

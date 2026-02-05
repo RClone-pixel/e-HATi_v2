@@ -47,7 +47,27 @@
                     </div>
                 </div>
                 <div class="row mb-4">
-                    <div class="col-xl-6 mb-4 mb-xl-0">
+                    <div class="col-xl-4 mb-4 mb-xl-0">
+                        <label for="tanggal_lahir" class="font-weight-bold"">
+                            <span class="text-danger">*</span>
+                            Jenis Kelamin
+                        </label>
+                        <select class="custom-select @error('jenis_kelamin') is-invalid @enderror" id="jenis_kelamin"
+                            name="jenis_kelamin" value="{{ old('jenis_kelamin') }}">
+                            <option disabled {{ old('jenis_kelamin') ? '' : 'selected' }} class="text-muted">-- Pilih Jenis
+                                Kelamin --</option>
+                            <option value="Laki-laki" {{ old('jenis_kelamin') == 'Laki-laki' ? 'selected' : '' }}>Laki-laki
+                            </option>
+                            <option value="Perempuan" {{ old('jenis_kelamin') == 'Perempuan' ? 'selected' : '' }}>Perempuan
+                            </option>
+                        </select>
+                        @error('jenis_kelamin')
+                            <small class="text-danger">
+                                {{ $message }}
+                            </small>
+                        @enderror
+                    </div>
+                    <div class="col-xl-4">
                         <label for="tanggal_lahir" class="font-weight-bold"">
                             <span class="text-danger">*</span>
                             Tanggal Lahir
@@ -61,7 +81,7 @@
                             </small>
                         @enderror
                     </div>
-                    <div class="col-xl-6">
+                    <div class="col-xl-4">
                         <div class="form-label">
                             <label for="golongan darah" class="font-weight-bold">
                                 <span class="text-danger">*</span>
@@ -69,18 +89,27 @@
                             </label>
                             <select class="custom-select @error('golongan_darah') is-invalid @enderror" id="golongan_darah"
                                 name="golongan_darah" value="{{ old('golongan_darah') }}">
-                                <option selected disabled class="text-muted" class="active">-- Pilih Gol. Darah --</option>
+                                <option disabled {{ old('golongan_darah') ? '' : 'selected' }} class="text-muted">-- Pilih
+                                    Gol. Darah --</option>
                                 <optgroup label="-- Rhesus Positif --">
-                                    <option>O+</option>
-                                    <option>A+</option>
-                                    <option>B+</option>
-                                    <option>AB+</option>
+                                    <option value="O+" {{ old('golongan_darah') == 'O+' ? 'selected' : '' }}>O+
+                                    </option>
+                                    <option value="A+" {{ old('golongan_darah') == 'A+' ? 'selected' : '' }}>A+
+                                    </option>
+                                    <option value="B+" {{ old('golongan_darah') == 'B+' ? 'selected' : '' }}>B+
+                                    </option>
+                                    <option value="AB+" {{ old('golongan_darah') == 'AB+' ? 'selected' : '' }}>AB+
+                                    </option>
                                 </optgroup>
                                 <optgroup label="-- Rhesus Negatif --">
-                                    <option>O-</option>
-                                    <option>A-</option>
-                                    <option>B-</option>
-                                    <option>AB-</option>
+                                    <option value="O-" {{ old('golongan_darah') == 'O-' ? 'selected' : '' }}>O-
+                                    </option>
+                                    <option value="A-" {{ old('golongan_darah') == 'A-' ? 'selected' : '' }}>A-
+                                    </option>
+                                    <option value="B-" {{ old('golongan_darah') == 'B-' ? 'selected' : '' }}>B-
+                                    </option>
+                                    <option value="AB-" {{ old('golongan_darah') == 'AB-' ? 'selected' : '' }}>AB-
+                                    </option>
                                 </optgroup>
                             </select>
                             @error('golongan_darah')

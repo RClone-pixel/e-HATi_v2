@@ -19,6 +19,14 @@
                 </div>
                 <div class="row">
                     <div class="col-6">
+                        Jenis Kelamin
+                    </div>
+                    <div class="col-6">
+                        : {{ $item->jenis_kelamin }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
                         Tanggal Lahir
                     </div>
                     <div class="col-6">

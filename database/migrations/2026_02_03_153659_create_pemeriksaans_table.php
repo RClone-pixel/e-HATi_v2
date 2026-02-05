@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('pemeriksaans', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('pegawai_id')->constrained()->onDelete('cascade');
+
+            $table->boolean('puasa')->default(false);
+            $table->integer('tinggi_badan')->nullable();
+            $table->integer('berat_badan')->nullable();
+
             $table->timestamps();
         });
     }

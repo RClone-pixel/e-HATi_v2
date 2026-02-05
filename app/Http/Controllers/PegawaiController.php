@@ -33,13 +33,15 @@ class PegawaiController extends Controller
     {
 
     $request->validate([
-        'nama' => 'required',
+        'nama'              => 'required',
+        'jenis_kelamin'     => 'required',
         'tanggal_lahir'     => 'required',
         'golongan_darah'    => 'required',
         'riwayat_penyakit'  => 'required',
         'foto'              => 'required|image|mimes:jpeg,png,jpg|max:2048',
     ], [
         'nama.required'             => 'Nama tidak boleh kosong',
+        'jenis_kelamin.required'    => 'Jenis Kelamin tidak boleh kosong',
         'tanggal_lahir.required'    => 'Tanggal Lahir tidak boleh kosong',
         'golongan_darah.required'   => 'Golongan Darah harus dipilih',
         'foto.required'             => 'Foto tidak boleh kosong',
@@ -50,6 +52,7 @@ class PegawaiController extends Controller
 
     $pegawai = new Pegawai;
     $pegawai->nama              = $request->nama;
+    $pegawai->jenis_kelamin     = $request->jenis_kelamin;
     $pegawai->tanggal_lahir     = $request->tanggal_lahir;
     $pegawai->umur              = \Carbon\Carbon::parse($request->tanggal_lahir)->age;
     $pegawai->gol_darah         = $request->golongan_darah;
@@ -70,6 +73,7 @@ class PegawaiController extends Controller
     return redirect()->route('pegawai')->with('success', 'Data berhasil ditambahkan');
     }
 
+    // layout edit Pegawai
             public function edit($id)
     {
         $data = array(
@@ -79,20 +83,22 @@ class PegawaiController extends Controller
         );
         return view('admin.pegawai.edit', $data);
     }
+    // layout edit Pegawai
 
     // Update Pegawai
-
         public function update(Request $request, $id)
     {
 
     $request->validate([
-        'nama' => 'required',
+        'nama'              => 'required',
+        'jenis_kelamin'     => 'required',
         'tanggal_lahir'     => 'required',
         'golongan_darah'    => 'required',
         'riwayat_penyakit'  => 'required',
         'foto'              => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
     ], [
         'nama.required'             => 'Nama tidak boleh kosong',
+        'jenis_kelamin.required'    => 'Jenis Kelamin tidak boleh kosong',
         'tanggal_lahir.required'    => 'Tanggal Lahir tidak boleh kosong',
         'golongan_darah.required'   => 'Golongan Darah harus dipilih',
         'foto.required'             => 'Foto tidak boleh kosong',
@@ -101,9 +107,9 @@ class PegawaiController extends Controller
         'foto.max'                  => 'Ukuran foto maksimal 2MB',
     ]);
 
-
     $pegawai =Pegawai::FindOrFail($id);
     $pegawai->nama              = $request->nama;
+    $pegawai->jenis_kelamin     = $request->jenis_kelamin;
     $pegawai->tanggal_lahir     = $request->tanggal_lahir;
     $pegawai->umur              = \Carbon\Carbon::parse($request->tanggal_lahir)->age;
     $pegawai->gol_darah         = $request->golongan_darah;
@@ -123,7 +129,9 @@ class PegawaiController extends Controller
 
     return redirect()->route('pegawai')->with('success', 'Data berhasil diedit');
     }
+    // Update Pegawai
 
+    // Delete Pegawai
     public function delete($id)
     {
         $pegawai = Pegawai::FindOrFail($id);
@@ -136,6 +144,6 @@ class PegawaiController extends Controller
 
         return redirect()->route('pegawai')->with('success', 'Data berhasil dihapus');
     }
-
+    // Delete Pegawai
 }
 

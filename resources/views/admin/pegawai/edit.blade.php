@@ -53,7 +53,29 @@
                     </div>
                 </div>
                 <div class="row mb-4">
-                    <div class="col-xl-6 mb-4 mb-xl-0">
+                    <div class="col-xl-4 mb-4 mb-xl-0">
+                        <label for="tanggal_lahir" class="font-weight-bold"">
+                            <span class="text-danger">*</span>
+                            Jenis Kelamin
+                        </label>
+                        <select class="custom-select @error('jenis_kelamin') is-invalid @enderror" id="jenis_kelamin"
+                            name="jenis_kelamin" value="{{ $pegawai->jenis_kelamin }}">
+                            <option disabled {{ old('jenis_kelamin') ? '' : 'selected' }} class="text-muted">-- Pilih Jenis
+                                Kelamin --</option>
+                            <option value="Laki-laki" {{ $pegawai->jenis_kelamin == 'Laki-laki' ? 'selected' : '' }}>
+                                Laki-laki
+                            </option>
+                            <option value="Perempuan" {{ $pegawai->jenis_kelamin == 'Perempuan' ? 'selected' : '' }}>
+                                Perempuan
+                            </option>
+                        </select>
+                        @error('jenis_kelamin')
+                            <small class="text-danger">
+                                {{ $message }}
+                            </small>
+                        @enderror
+                    </div>
+                    <div class="col-xl-4">
                         <label for="tanggal_lahir" class="font-weight-bold"">
                             <span class="text-danger">*</span>
                             Tanggal Lahir
@@ -67,7 +89,7 @@
                             </small>
                         @enderror
                     </div>
-                    <div class="col-xl-6">
+                    <div class="col-xl-4">
                         <div class="form-label">
                             <label for="golongan darah" class="font-weight-bold">
                                 <span class="text-danger">*</span>
